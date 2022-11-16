@@ -1,11 +1,13 @@
 package com.example.app
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 
 class HomeFragment : Fragment() {
 
@@ -22,9 +24,14 @@ class HomeFragment : Fragment() {
 
         val button = view.findViewById<Button>(R.id.btn_enter_product_detail)
         button.setOnClickListener {
-        val transaction = parentFragmentManager.beginTransaction()
+            findNavController().navigate(R.id.action_home_to_product_detail)
+
+        /*직접 이동 코드를 입력하는 것에서 네비게이션 이용으로 변경
+            val transaction = parentFragmentManager.beginTransaction()
             transaction.add(R.id.container_main,ProductsDetailFragment())
-            transaction.commit()
+            transaction.commit()*/
         }
+        val assetLoader = AssetLoader()
+        val homeData = assetLoader.getJsonString(requireContext(), "home.json")
     }
 }
