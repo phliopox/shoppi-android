@@ -15,15 +15,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/iv_banner_detail_thumbnail"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:contentDescription="@string/detail_thumbnail"
-        app:layout_constraintStart_toStartOf="@+id/bg_banner_product_detail"
-        app:layout_constraintTop_toTopOf="@+id/bg_banner_product_detail" />
 
     <TextView
         android:id="@+id/tv_banner_badge"
@@ -50,6 +41,15 @@
         app:layout_constraintBottom_toBottomOf="@+id/iv_banner_image"
         app:layout_constraintEnd_toEndOf="@id/iv_banner_image"
         app:layout_constraintStart_toStartOf="@id/iv_banner_image" />
+    <ImageView
+        android:id="@+id/iv_banner_detail_thumbnail"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:contentDescription="@string/detail_thumbnail"
+        app:layout_constraintStart_toStartOf="@+id/bg_banner_product_detail"
+        app:layout_constraintTop_toTopOf="@+id/bg_banner_product_detail" />
 
     <TextView
         android:id="@+id/tv_banner_title"
