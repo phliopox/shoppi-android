@@ -1,4 +1,4 @@
-package com.example.app
+package com.example.app.ui.home
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -10,10 +10,15 @@ import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.app.model.Banner
+import com.example.app.GlideApp
+import com.example.app.R
 import java.text.DecimalFormat
 import kotlin.math.roundToInt
 
-class HomeBannerAdapter : ListAdapter<Banner,HomeBannerAdapter.HomeBannerViewHolder>(BannerDiffCallback()){
+class HomeBannerAdapter : ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHolder>(
+    BannerDiffCallback()
+){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeBannerViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.item_home_banner,parent,false)
@@ -37,7 +42,7 @@ class HomeBannerAdapter : ListAdapter<Banner,HomeBannerAdapter.HomeBannerViewHol
         private val bannerDetailDiscountPriceTextView = view.findViewById<TextView>(R.id.tv_banner_detail_product_discount_price)
         private val bannerDetailPriceTextView = view.findViewById<TextView>(R.id.tv_banner_detail_product_price)
 
-        fun bind(banner :Banner){
+        fun bind(banner : Banner){
             loadImage(banner.backgroundImageUrl,bannerImageView)
 
             bannerBadgeTextView.text = banner.badge.label
