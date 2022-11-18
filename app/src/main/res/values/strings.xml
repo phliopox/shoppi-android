@@ -8,4 +8,7 @@
     <string name="label_cart_icon">카트</string>
     <string name="detail_thumbnail">상품 썸네일</string>
     <string name="banner_image">배너이미지</string>
+
+    <string name="unit_discount_rate">%d%%</string>
+    <string name="unit_discount_currency">%s원</string>
 </resources>
