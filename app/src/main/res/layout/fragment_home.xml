@@ -62,7 +62,6 @@
                     android:layout_gravity="end"
                     android:layout_marginEnd="4dp"
                     android:scaleType="center"
-                    imageUrl="@{title.iconUrl}"
                     android:src="@drawable/ic_gnb_back" />
 
                 <TextView
