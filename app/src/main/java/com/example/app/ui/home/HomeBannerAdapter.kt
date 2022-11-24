@@ -2,15 +2,19 @@ package com.example.app.ui.home
 
 import android.annotation.SuppressLint
 import android.graphics.Color
+import android.graphics.Paint
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.widget.ViewPager2
 import com.example.app.model.Banner
 import com.example.app.GlideApp
 import com.example.app.R
@@ -18,7 +22,7 @@ import com.example.app.databinding.ItemHomeBannerBinding
 import java.text.DecimalFormat
 import kotlin.math.roundToInt
 
-class HomeBannerAdapter : ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHolder>(
+class HomeBannerAdapter (private val viewModel: HomeViewModel): ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHolder>(
     BannerDiffCallback()
 ){
     private lateinit var binding: ItemHomeBannerBinding
@@ -31,12 +35,13 @@ class HomeBannerAdapter : ListAdapter<Banner, HomeBannerAdapter.HomeBannerViewHo
     override fun onBindViewHolder(holder: HomeBannerViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
-
-    class HomeBannerViewHolder(private val binding: ItemHomeBannerBinding) : RecyclerView.ViewHolder(binding.root){
+    inner class HomeBannerViewHolder(private val binding: ItemHomeBannerBinding) : RecyclerView.ViewHolder(binding.root){
 
         fun bind(banner : Banner){
             binding.banner= banner
+            binding.viewModel = viewModel
             binding.executePendingBindings()
+
         }
 
         private fun calculateDiscountAmount(view:TextView ,discountRate: Int, price: Int){

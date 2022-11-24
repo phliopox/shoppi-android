@@ -1,16 +1,21 @@
 package com.example.app.ui.home
 
+import android.graphics.Paint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.app.*
+import com.example.app.common.KEY_PRODUCT_ID
 import com.example.app.databinding.FragmentHomeBinding
+import com.example.app.ui.common.EventObserver
 import com.example.app.ui.common.ViewModelFactory
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -33,10 +38,8 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.lifecycleOwner = viewLifecycleOwner
-
         setToolbar()
+        setNavigation()
         setTopBanners()
     }
 
@@ -49,10 +52,14 @@ class HomeFragment : Fragment() {
             binding.title = title
         }
     }
-
+    private fun setNavigation(){
+        viewModel.openProductEvent.observe(viewLifecycleOwner,EventObserver{ productId->
+            findNavController().navigate(R.id.action_home_to_product_detail, bundleOf(KEY_PRODUCT_ID to productId))
+        })
+    }
     private fun setTopBanners() {
         with(binding.viewpagerHomeBanner) {
-            adapter = HomeBannerAdapter().apply {
+            adapter = HomeBannerAdapter(viewModel).apply {
                 viewModel.topBanners.observe(viewLifecycleOwner) { banners ->
                     submitList(banners)
                 }
@@ -73,6 +80,7 @@ class HomeFragment : Fragment() {
             ) { tab, position -> }.attach()
         }
     }
+
 
 
 }
