@@ -27,7 +27,7 @@
             android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/radius4"
+            app:shapeAppearanceOverlay="@style/radius12"
             tools:src="@drawable/img_pdp_top_01" />
 
         <View
@@ -90,7 +90,7 @@
             android:layout_marginTop="12dp"
             android:contentDescription="@string/detail_thumbnail"
             imageUrl="@{banner.productDetail.thumbnailImageUrl}"
-            app:shapeAppearanceOverlay="@style/radius15"
+            app:shapeAppearanceOverlay="@style/radius8"
             app:layout_constraintStart_toStartOf="@+id/bg_banner_product_detail"
             app:layout_constraintTop_toTopOf="@+id/bg_banner_product_detail"
             tools:src="@drawable/img_pdp_top_01"/>

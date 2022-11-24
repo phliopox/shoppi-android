@@ -12,4 +12,6 @@
     <string name="unit_discount_rate">%d%%</string>
     <string name="unit_discount_currency">%s원</string>
     <string name="label_category_new">NEW</string>
+    <string name="cart_btn_label">장바구니 담기</string>
+    <string name="coupon_price_label">쿠폰 적용가</string>
 </resources>

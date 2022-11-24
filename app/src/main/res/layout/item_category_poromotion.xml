@@ -64,6 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="4dp"
                 priceAmount="@{product.price}"
+                strikeThrough="@{true}"
                 app:layout_constraintBottom_toBottomOf="@id/tv_promotion_price"
                 app:layout_constraintStart_toEndOf="@id/tv_promotion_price"
                 tools:text="120,000원" />

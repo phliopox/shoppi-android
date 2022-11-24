@@ -6,10 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ConcatAdapter
-import com.example.app.common.KEY_CATEGORY_ID
 import com.example.app.common.KEY_CATEGORY_LABEL
 import com.example.app.databinding.FragmentCategoryDetailBinding
 import com.example.app.ui.common.ViewModelFactory

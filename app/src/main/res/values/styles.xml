@@ -2,8 +2,8 @@
 <resources>
     <!--ImageView Style-->
     <style name="Circle"><item name="cornerSize">50%</item></style>
-    <style name="radius4"><item name="cornerSize">12dp</item></style>
-    <style name="radius15"><item name="cornerSize">8dp</item></style>
+    <style name="radius12"><item name="cornerSize">12dp</item></style>
+    <style name="radius8"><item name="cornerSize">8dp</item></style>
 
     <!-- Text Style -->
     <style name="TextMedium" parent="TextAppearance.AppCompat.Medium">
@@ -73,6 +73,9 @@
     <style name="TextCaption2" parent="TextAppearance.AppCompat.Caption">
         <item name="android:textSize">11sp</item>
         <item name="android:textColor">@color/shoppi_black_01</item>
+    </style>
+    <style name="TextCaption2.Grey04">
+        <item name="android:textColor">@color/shoppi_grey_04</item>
     </style>
     <style name="TextCaption2.White">
         <item name="android:textColor">@color/shoppi_white</item>
