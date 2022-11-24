@@ -3,7 +3,7 @@ package com.example.app.model
 import com.google.gson.annotations.SerializedName
 
 data class CategoryDetail(
-    @SerializedName("top_selling") val topSelling : TopSelling,
+    @SerializedName("top-selling") val topSelling : TopSelling,
     val promotions : Promotion
     )
 
