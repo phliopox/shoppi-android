@@ -17,9 +17,9 @@ import com.example.app.ui.category.CategoryViewModel
 import com.example.app.ui.categorydetail.CategoryDetailViewModel
 import com.example.app.ui.home.HomeViewModel
 import com.example.app.ui.productsDetail.ProductDetailViewModel
-import java.lang.IllegalArgumentException
+import kotlin.IllegalArgumentException
 
-class ViewModelFactory(private val context: Context): ViewModelProvider.Factory {
+class ViewModelFactory(private val context: Context,private val productId:String?): ViewModelProvider.Factory {
 
      override fun <T : ViewModel> create(modelClass: Class<T>): T {
          return when{
@@ -36,8 +36,13 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
                  CategoryDetailViewModel(repository) as T
              }
              modelClass.isAssignableFrom(ProductDetailViewModel::class.java)->{
-                 val repository = ProductDetailRepository(ProductDetailRemoteDataSource(ApiClient.create()))
-                 ProductDetailViewModel(repository) as T
+                 //이곳 람다 ?let
+                 if(productId!=null){
+                     val repository = ProductDetailRepository(ProductDetailRemoteDataSource(ApiClient.create(), productId))
+                    ProductDetailViewModel(repository) as T
+                 }else{
+                     throw IllegalArgumentException("ProductID Not Exist : ${modelClass.name}")
+                 }
              }
              else -> {
                  throw IllegalArgumentException("Failed to create ViewModel : ${modelClass.name}")

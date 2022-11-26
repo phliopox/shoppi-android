@@ -17,7 +17,7 @@ import com.example.app.ui.common.ViewModelFactory
 
 class CategoryFragment : Fragment() {
 
-    private val viewModel : CategoryViewModel by viewModels { ViewModelFactory(requireContext()) }
+    private val viewModel : CategoryViewModel by viewModels { ViewModelFactory(requireContext(),null) }
     private lateinit var binding: FragmentCategoryBinding
 
     override fun onCreateView(

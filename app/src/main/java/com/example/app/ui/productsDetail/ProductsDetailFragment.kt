@@ -12,8 +12,6 @@ import com.example.app.databinding.FragmentProductDetailBinding
 import com.example.app.ui.common.ViewModelFactory
 
 class ProductsDetailFragment : Fragment() {
-
-    private val viewModel : ProductDetailViewModel by viewModels{ViewModelFactory(requireContext())}
     private lateinit var binding : FragmentProductDetailBinding
 
     override fun onCreateView(
@@ -31,19 +29,21 @@ class ProductsDetailFragment : Fragment() {
 
         val productId = requireArguments().getString(KEY_PRODUCT_ID)
         Log.d("ProductDetailFragment", "productId=$productId")
+        val viewModel : ProductDetailViewModel by viewModels{ViewModelFactory(requireContext(), productId)}
 
         val productDetailAdapter = ProductDetailAdapter()
         binding.rvProductDetail.adapter = productDetailAdapter
+        //TODO 현재 adapter 1개, id 일치 검사 x
+        //home banner에서 넘겨받은 ㅇ
 
-        /*with(binding.rvProductDetail){
-            adapter = productDetailAdapter.apply {
-                viewModel.products.observe(viewLifecycleOwner){
+        viewModel.products.observe(viewLifecycleOwner){
                     products -> binding.product = products
-                }
-            }
-        }*/
-    viewModel.products.observe(viewLifecycleOwner){ products->
-            productDetailAdapter.submitList(products)
         }
     }
+
+  /*  viewModel.products.observe(viewLifecycleOwner){ products->
+            productDetailAdapter.submitList(products)
+        }
+    }*/
+
 }

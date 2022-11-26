@@ -18,8 +18,8 @@ interface ApiClient {
     @GET("fashion-female.json")
     suspend fun getCategoryDetail(): CategoryDetail
 
-    @GET("products.json")
-    suspend fun getProducts() : List<Product>
+    @GET("products/{productId}.json")
+    suspend fun getProducts(@Path("productId") productId:String) : Product
     /*
     get path를 파라미터로 넘겨받는 방법도 있다.
     @GET("{categoryId}.json")

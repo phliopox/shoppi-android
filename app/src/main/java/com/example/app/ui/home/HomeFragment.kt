@@ -23,7 +23,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 class HomeFragment : Fragment() {
 
     //뷰모델 생성시 뷰모델 팩토리 create 메소드에서 의존관계로인해 바로 db 1 회 호출
-    private val viewModel : HomeViewModel by viewModels{ ViewModelFactory(requireContext()) }
+    private val viewModel : HomeViewModel by viewModels{ ViewModelFactory(requireContext(),null) }
     private lateinit var binding : FragmentHomeBinding
 
     override fun onCreateView(
