@@ -12,10 +12,13 @@ data class BannerBadge(
     val label :String,
     @SerializedName("background_color") val backgroundColor : String
 )
+/*data class Products(
+    val  :
+)*/
 data class Product(
-    @SerializedName("product_id") val productId:String,
     @SerializedName("brand_name") val brandName :String,
     val label : String,
+    @SerializedName("product_id") val productId:String,
     @SerializedName("discount_rate") val discountRate: Int,
     val price: Int,
     val type : String?,

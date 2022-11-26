@@ -2,6 +2,7 @@ package com.example.app.network
 
 import com.example.app.model.Category
 import com.example.app.model.CategoryDetail
+import com.example.app.model.Product
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -17,6 +18,8 @@ interface ApiClient {
     @GET("fashion-female.json")
     suspend fun getCategoryDetail(): CategoryDetail
 
+    @GET("products.json")
+    suspend fun getProducts() : List<Product>
     /*
     get path를 파라미터로 넘겨받는 방법도 있다.
     @GET("{categoryId}.json")
