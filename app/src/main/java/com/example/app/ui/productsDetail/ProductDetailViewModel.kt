@@ -1,6 +1,5 @@
 package com.example.app.ui.productsDetail
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -19,7 +18,6 @@ class ProductDetailViewModel(private val productDetailRepository: ProductDetailR
         viewModelScope.launch {
             val remoteProduct = productDetailRepository.getData(productId)
             _products.value = remoteProduct
-            Log.d("ProductViewModel",_products.value.toString())
         }
     }
 

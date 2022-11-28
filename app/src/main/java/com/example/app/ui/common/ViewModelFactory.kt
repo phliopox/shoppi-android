@@ -5,6 +5,7 @@ import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.app.AssetLoader
+import com.example.app.ServiceLocator
 import com.example.app.network.ApiClient
 import com.example.app.repository.category.CategoryRemoteDataSource
 import com.example.app.repository.category.CategoryRepository
@@ -29,16 +30,16 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
              HomeViewModel(repository) as T
              }
              modelClass.isAssignableFrom(CategoryViewModel::class.java) -> {
-                 val repository = CategoryRepository(CategoryRemoteDataSource(ApiClient.create()))
+                 val repository = CategoryRepository(CategoryRemoteDataSource(ServiceLocator.provideApiClient()))
                  CategoryViewModel(repository) as T
              }
              modelClass.isAssignableFrom(CategoryDetailViewModel::class.java)->{
-                 val repository = CategoryDetailRepository(CategoryDetailRemoteDataSource(ApiClient.create()))
+                 val repository = CategoryDetailRepository(CategoryDetailRemoteDataSource(ServiceLocator.provideApiClient()))
                  CategoryDetailViewModel(repository) as T
              }
              modelClass.isAssignableFrom(ProductDetailViewModel::class.java)->{
                  //이곳 람다 ?let
-                 val repository = ProductDetailRepository(ProductDetailRemoteDataSource(ApiClient.create()))
+                 val repository = ProductDetailRepository(ProductDetailRemoteDataSource(ServiceLocator.provideApiClient()))
                  ProductDetailViewModel(repository) as T
              }
              else -> {

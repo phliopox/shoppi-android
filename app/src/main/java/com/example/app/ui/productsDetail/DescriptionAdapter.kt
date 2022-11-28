@@ -12,7 +12,6 @@ import com.example.app.model.ProductDescriptions
 class DescriptionAdapter :ListAdapter<ProductDescriptions,DescriptionAdapter.ProductDescriptionsViewHolder>(ProductDescriptionsDiff()) {
     private lateinit var binding : ProductDetailImageBinding
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductDescriptionsViewHolder {
-        Log.d("ProductAdapter","호출")
 
         binding = ProductDetailImageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ProductDescriptionsViewHolder(binding)
@@ -28,7 +27,6 @@ class DescriptionAdapter :ListAdapter<ProductDescriptions,DescriptionAdapter.Pro
         fun bind(description : ProductDescriptions){
             binding.descriptions = description
             binding.executePendingBindings()
-            Log.d("ProductAdapter",description.toString())
         }
     }
 }
