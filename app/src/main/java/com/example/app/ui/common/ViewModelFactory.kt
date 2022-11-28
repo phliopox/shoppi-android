@@ -1,6 +1,7 @@
 package com.example.app.ui.common
 
 import android.content.Context
+import androidx.core.os.bundleOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.app.AssetLoader
@@ -19,7 +20,7 @@ import com.example.app.ui.home.HomeViewModel
 import com.example.app.ui.productsDetail.ProductDetailViewModel
 import kotlin.IllegalArgumentException
 
-class ViewModelFactory(private val context: Context,private val productId:String?): ViewModelProvider.Factory {
+class ViewModelFactory(private val context: Context): ViewModelProvider.Factory {
 
      override fun <T : ViewModel> create(modelClass: Class<T>): T {
          return when{
@@ -37,12 +38,8 @@ class ViewModelFactory(private val context: Context,private val productId:String
              }
              modelClass.isAssignableFrom(ProductDetailViewModel::class.java)->{
                  //이곳 람다 ?let
-                 if(productId!=null){
-                     val repository = ProductDetailRepository(ProductDetailRemoteDataSource(ApiClient.create(), productId))
-                    ProductDetailViewModel(repository) as T
-                 }else{
-                     throw IllegalArgumentException("ProductID Not Exist : ${modelClass.name}")
-                 }
+                 val repository = ProductDetailRepository(ProductDetailRemoteDataSource(ApiClient.create()))
+                 ProductDetailViewModel(repository) as T
              }
              else -> {
                  throw IllegalArgumentException("Failed to create ViewModel : ${modelClass.name}")

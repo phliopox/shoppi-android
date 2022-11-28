@@ -12,12 +12,12 @@ class ProductDetailViewModel(private val productDetailRepository: ProductDetailR
 
     private val _products = MutableLiveData<Product>()
     val products = _products
-    init {
+    /*init {
         loadData()
-    }
-    private fun loadData(){
+    }*/
+     fun loadProductDetail(productId : String){
         viewModelScope.launch {
-            val remoteProduct = productDetailRepository.getData()
+            val remoteProduct = productDetailRepository.getData(productId)
             _products.value = remoteProduct
             Log.d("ProductViewModel",_products.value.toString())
         }

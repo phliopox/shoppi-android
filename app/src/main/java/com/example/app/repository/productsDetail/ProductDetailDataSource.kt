@@ -4,5 +4,5 @@ import com.example.app.model.Product
 
 
 interface ProductDetailDataSource {
-   suspend fun getProductDetailData() : Product
+   suspend fun getProductDetailData(productId:String) : Product
 }
