@@ -162,7 +162,8 @@
                     app:layout_anchor="@+id/appBarLayout"
                     app:layout_anchorGravity="center"
                     app:layout_scrollFlags="scroll|enterAlways"
-                    app:navigationIcon="@drawable/ic_gnb_back" />
+                    app:navigationIcon="@drawable/ic_gnb_back"
+                   />
 
             </com.google.android.material.appbar.AppBarLayout>
         </androidx.coordinatorlayout.widget.CoordinatorLayout>

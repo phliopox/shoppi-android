@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ConcatAdapter
 import com.example.app.common.KEY_CATEGORY_LABEL
 import com.example.app.databinding.FragmentCategoryDetailBinding
@@ -30,6 +31,7 @@ class CategoryDetailFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         setToolbar()
         setListAdapter()
+        setNavigation()
     }
 
     private fun setToolbar() {
@@ -51,5 +53,10 @@ class CategoryDetailFragment : Fragment() {
             promotionAdapter.submitList(promotions.items)
         }
 
+    }
+    private fun setNavigation(){
+        binding.toolbarCategoryDetail.setNavigationOnClickListener {
+            findNavController().navigateUp()
+        }
     }
 }
