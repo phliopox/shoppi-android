@@ -15,6 +15,7 @@ import com.example.app.repository.home.HomeAssetDataSource
 import com.example.app.repository.home.HomeRepository
 import com.example.app.repository.productsDetail.ProductDetailRemoteDataSource
 import com.example.app.repository.productsDetail.ProductDetailRepository
+import com.example.app.ui.cart.CartViewModel
 import com.example.app.ui.category.CategoryViewModel
 import com.example.app.ui.categorydetail.CategoryDetailViewModel
 import com.example.app.ui.home.HomeViewModel
@@ -41,6 +42,9 @@ class ViewModelFactory(private val context: Context): ViewModelProvider.Factory 
                  //이곳 람다 ?let
                  val repository = ProductDetailRepository(ProductDetailRemoteDataSource(ServiceLocator.provideApiClient()))
                  ProductDetailViewModel(repository) as T
+             }
+             modelClass.isAssignableFrom(CartViewModel::class.java)->{
+                 CartViewModel() as T
              }
              else -> {
                  throw IllegalArgumentException("Failed to create ViewModel : ${modelClass.name}")
