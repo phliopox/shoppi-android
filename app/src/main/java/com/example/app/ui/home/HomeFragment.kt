@@ -12,13 +12,10 @@ import androidx.recyclerview.widget.ConcatAdapter
 import com.example.app.*
 import com.example.app.common.KEY_PRODUCT_ID
 import com.example.app.databinding.FragmentHomeBinding
-import com.example.app.ui.common.ProductPromotionAdapter
-import com.example.app.ui.common.TitleSectionTitleAdapter
-import com.example.app.ui.common.EventObserver
-import com.example.app.ui.common.ViewModelFactory
+import com.example.app.ui.common.*
 import com.google.android.material.tabs.TabLayoutMediator
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(),ProductClickListener {
 
     //뷰모델 생성시 뷰모델 팩토리 create 메소드에서 의존관계로인해 바로 db 1 회 호출
     private val viewModel : HomeViewModel by viewModels{ ViewModelFactory(requireContext()) }
@@ -82,9 +79,8 @@ class HomeFragment : Fragment() {
 
     private fun setPromotions() {
 
-        val navigateByProductId = NavigateByProductId()
         val titleSectionTitleAdapter = TitleSectionTitleAdapter()
-        val productPromotionAdapter = ProductPromotionAdapter(navigateByProductId)
+        val productPromotionAdapter = ProductPromotionAdapter(this)
 
         binding.homeCategoryPromotions.adapter =
             ConcatAdapter(titleSectionTitleAdapter, productPromotionAdapter)
@@ -93,11 +89,17 @@ class HomeFragment : Fragment() {
             productPromotionAdapter.submitList(promotion.items)
         }
     }
-    inner class NavigateByProductId{
-        fun navigateByProductId(productId : String){
-            // productId 에 맞는 detail 데이터가 부족. -> desk-1으로 하드코딩
-            findNavController().navigate(R.id.action_home_to_product_detail, bundleOf(KEY_PRODUCT_ID to "desk-1"))
-        }
+
+    //ProductClickListener.kt
+    override fun onProductClick(productId: String) {
+        findNavController().navigate(R.id.action_home_to_product_detail, bundleOf(KEY_PRODUCT_ID to "desk-1"))
     }
+
+    /* inner class NavigateByProductId{
+         fun navigateByProductId(productId : String){
+             // productId 에 맞는 detail 데이터가 부족. -> desk-1으로 하드코딩
+             findNavController().navigate(R.id.action_home_to_product_detail, bundleOf(KEY_PRODUCT_ID to "desk-1"))
+         }
+     }*/
 
 }

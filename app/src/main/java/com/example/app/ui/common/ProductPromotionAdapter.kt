@@ -7,9 +7,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.app.databinding.ItemProductPoromotionBinding
 import com.example.app.model.Product
-import com.example.app.ui.home.HomeFragment
 
-class ProductPromotionAdapter(private val navigator : HomeFragment.NavigateByProductId?) :ListAdapter<Product, ProductPromotionAdapter.ProductPromotionViewHolder>(
+class ProductPromotionAdapter(private val clickListener: ProductClickListener) :ListAdapter<Product, ProductPromotionAdapter.ProductPromotionViewHolder>(
     ProductDiffCallBack()
 ){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductPromotionViewHolder {
@@ -19,17 +18,12 @@ class ProductPromotionAdapter(private val navigator : HomeFragment.NavigateByPro
 
     override fun onBindViewHolder(holder: ProductPromotionViewHolder, position: Int) {
         holder.bind(getItem(position))
-
-        holder.itemView.setOnClickListener {
-            val productId = getItem(position).productId
-            navigator?.let{ navigator.navigateByProductId(productId) }
-        }
-
     }
 
     inner class ProductPromotionViewHolder(private val binding : ItemProductPoromotionBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(product : Product){
             binding.product = product
+            binding.clickListener = clickListener
             binding.executePendingBindings()
         }
     }
