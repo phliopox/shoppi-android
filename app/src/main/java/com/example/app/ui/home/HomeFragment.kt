@@ -2,6 +2,7 @@ package com.example.app.ui.home
 
 import android.graphics.Paint
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,12 +12,17 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ConcatAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.app.*
 import com.example.app.common.KEY_PRODUCT_ID
 import com.example.app.databinding.FragmentHomeBinding
+import com.example.app.ui.categorydetail.CategoryPromotionAdapter
+import com.example.app.ui.categorydetail.CategorySectionTitleAdapter
 import com.example.app.ui.common.EventObserver
 import com.example.app.ui.common.ViewModelFactory
+import com.example.app.ui.productsDetail.ProductDetailViewModel
+import com.example.app.ui.productsDetail.ProductsDetailFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -41,6 +47,7 @@ class HomeFragment : Fragment() {
         setToolbar()
         setNavigation()
         setTopBanners()
+        setPromotions()
     }
 
 
@@ -81,6 +88,28 @@ class HomeFragment : Fragment() {
         }
     }
 
+    private fun setPromotions() {
 
+        val navigateByProductId = NavigateByProductId()
+        val categorySectionTitleAdapter = CategorySectionTitleAdapter()
+        val categoryPromotionAdapter = CategoryPromotionAdapter(navigateByProductId)
+
+        binding.homeCategoryPromotions.adapter =
+            ConcatAdapter(categorySectionTitleAdapter, categoryPromotionAdapter)
+        viewModel.promotion.observe(viewLifecycleOwner) { promotion ->
+            categorySectionTitleAdapter.submitList(listOf(promotion.title))
+            categoryPromotionAdapter.submitList(promotion.items)
+        }
+       /* binding.homeCategoryPromotions.setOnClickListener{
+            findNavController().navigate(R.id.action_home_to_product_detail, bundleOf(KEY_PRODUCT_ID to "desk-1"))
+        }*/
+
+    }
+    inner class NavigateByProductId{
+        fun navigateByProductId(productId : String){
+            // productId 에 맞는 detail 데이터가 부족. -> desk-1으로 하드코딩
+            findNavController().navigate(R.id.action_home_to_product_detail, bundleOf(KEY_PRODUCT_ID to "desk-1"))
+        }
+    }
 
 }

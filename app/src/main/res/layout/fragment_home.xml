@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -27,7 +28,8 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:listitem="@layout/item_home_banner"/>
 
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/viewpager_home_banner_indicator"
@@ -39,6 +41,20 @@
                     app:tabBackground="@drawable/selector_viewpager_indicator"
                     app:tabIndicatorHeight="0dp"
                     app:tabGravity="center" />
+
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/home_category_promotions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintTop_toBottomOf="@id/viewpager_home_banner_indicator"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:nestedScrollingEnabled="false"
+                    tools:listitem="@layout/item_category_poromotion"
+                    />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.core.widget.NestedScrollView>
@@ -61,7 +77,7 @@
                     android:layout_gravity="end"
                     android:layout_marginEnd="4dp"
                     android:scaleType="center"
-                    android:src="@drawable/ic_gnb_back" />
+                    tools:src="@drawable/ic_gnb_back" />
 
                 <TextView
                     android:id="@+id/toolbar_home_title"
@@ -74,7 +90,8 @@
                     android:paddingEnd="16dp"
                     android:paddingStart="16dp"
                     android:paddingTop="32dp"
-                    android:text="@{title.text}" />
+                    android:text="@{title.text}"
+                    tools:text="IVY님, 이런 상품\n 어때요?"/>
             </androidx.appcompat.widget.Toolbar>
         </com.google.android.material.appbar.AppBarLayout>
 

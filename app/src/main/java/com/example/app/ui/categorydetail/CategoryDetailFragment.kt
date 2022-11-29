@@ -38,11 +38,10 @@ class CategoryDetailFragment : Fragment() {
         val categoryLabel = requireArguments().getString(KEY_CATEGORY_LABEL)
         binding.toolbarCategoryDetail.title = categoryLabel
     }
-
     private fun setListAdapter() {
         val topSellingSectionAdapter = CategoryTopSellingSectionAdapter()
         val titleAdapter = CategorySectionTitleAdapter()
-        val promotionAdapter = CategoryPromotionAdapter()
+        val promotionAdapter = CategoryPromotionAdapter(null)
         binding.rvCategoryDetail.adapter = ConcatAdapter(topSellingSectionAdapter,titleAdapter, promotionAdapter)
         viewModel.topSelling.observe(viewLifecycleOwner){topSelling->
             topSellingSectionAdapter.submitList(listOf(topSelling))
