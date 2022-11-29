@@ -10,6 +10,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ConcatAdapter
 import com.example.app.common.KEY_CATEGORY_LABEL
 import com.example.app.databinding.FragmentCategoryDetailBinding
+import com.example.app.ui.common.ProductPromotionAdapter
+import com.example.app.ui.common.TitleSectionTitleAdapter
 import com.example.app.ui.common.ViewModelFactory
 
 class CategoryDetailFragment : Fragment() {
@@ -40,8 +42,8 @@ class CategoryDetailFragment : Fragment() {
     }
     private fun setListAdapter() {
         val topSellingSectionAdapter = CategoryTopSellingSectionAdapter()
-        val titleAdapter = CategorySectionTitleAdapter()
-        val promotionAdapter = CategoryPromotionAdapter(null)
+        val titleAdapter = TitleSectionTitleAdapter()
+        val promotionAdapter = ProductPromotionAdapter(null)
         binding.rvCategoryDetail.adapter = ConcatAdapter(topSellingSectionAdapter,titleAdapter, promotionAdapter)
         viewModel.topSelling.observe(viewLifecycleOwner){topSelling->
             topSellingSectionAdapter.submitList(listOf(topSelling))

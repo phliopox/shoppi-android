@@ -1,22 +1,23 @@
-package com.example.app.ui.categorydetail
+package com.example.app.ui.common
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.navigation.NavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.app.databinding.ItemCategoryPoromotionBinding
+import com.example.app.databinding.ItemProductPoromotionBinding
 import com.example.app.model.Product
 import com.example.app.ui.home.HomeFragment
 
-class CategoryPromotionAdapter(private val navigator : HomeFragment.NavigateByProductId?) :ListAdapter<Product,CategoryPromotionAdapter.CategoryPromotionViewHolder>(ProductDiffCallBack()){
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryPromotionViewHolder {
-        val binding = ItemCategoryPoromotionBinding.inflate(LayoutInflater.from(parent.context),parent,false)
-        return CategoryPromotionViewHolder(binding)
+class ProductPromotionAdapter(private val navigator : HomeFragment.NavigateByProductId?) :ListAdapter<Product, ProductPromotionAdapter.ProductPromotionViewHolder>(
+    ProductDiffCallBack()
+){
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductPromotionViewHolder {
+        val binding = ItemProductPoromotionBinding.inflate(LayoutInflater.from(parent.context),parent,false)
+        return ProductPromotionViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: CategoryPromotionViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ProductPromotionViewHolder, position: Int) {
         holder.bind(getItem(position))
 
         holder.itemView.setOnClickListener {
@@ -26,7 +27,7 @@ class CategoryPromotionAdapter(private val navigator : HomeFragment.NavigateByPr
 
     }
 
-    inner class CategoryPromotionViewHolder(private val binding : ItemCategoryPoromotionBinding) : RecyclerView.ViewHolder(binding.root){
+    inner class ProductPromotionViewHolder(private val binding : ItemProductPoromotionBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(product : Product){
             binding.product = product
             binding.executePendingBindings()

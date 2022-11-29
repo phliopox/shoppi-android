@@ -1,4 +1,4 @@
-package com.example.app.ui.categorydetail
+package com.example.app.ui.common
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,23 +8,25 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.app.databinding.ItemTitleBinding
 import com.example.app.model.Title
 
-class CategorySectionTitleAdapter :ListAdapter<Title,CategorySectionTitleAdapter.CategorySectionTitleViewHolder>(TitleDiffCallBack()) {
+class TitleSectionTitleAdapter :ListAdapter<Title, TitleSectionTitleAdapter.TitleSectionTitleViewHolder>(
+    TitleDiffCallBack()
+) {
 
 //    private lateinit var binding : ItemTitleBinding
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): CategorySectionTitleViewHolder {
+    ): TitleSectionTitleViewHolder {
         val binding =  ItemTitleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return CategorySectionTitleViewHolder(binding)
+        return TitleSectionTitleViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: CategorySectionTitleViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: TitleSectionTitleViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
-    inner class CategorySectionTitleViewHolder(private val binding : ItemTitleBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class TitleSectionTitleViewHolder(private val binding : ItemTitleBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(title : Title) {
             binding.title = title
             binding.executePendingBindings()

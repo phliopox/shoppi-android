@@ -6,14 +6,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
-import com.example.app.databinding.ProductDetailImageBinding
+import com.example.app.databinding.ItemProductDetailDescriptionBinding
 import com.example.app.model.ProductDescriptions
 
 class DescriptionAdapter :ListAdapter<ProductDescriptions,DescriptionAdapter.ProductDescriptionsViewHolder>(ProductDescriptionsDiff()) {
-    private lateinit var binding : ProductDetailImageBinding
+    private lateinit var binding : ItemProductDetailDescriptionBinding
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductDescriptionsViewHolder {
 
-        binding = ProductDetailImageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        binding = ItemProductDetailDescriptionBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ProductDescriptionsViewHolder(binding)
     }
 
@@ -22,7 +22,7 @@ class DescriptionAdapter :ListAdapter<ProductDescriptions,DescriptionAdapter.Pro
     }
 
     inner class ProductDescriptionsViewHolder(
-        private val binding : ProductDetailImageBinding):ViewHolder(binding.root){
+        private val binding : ItemProductDetailDescriptionBinding):ViewHolder(binding.root){
 
         fun bind(description : ProductDescriptions){
             binding.descriptions = description
