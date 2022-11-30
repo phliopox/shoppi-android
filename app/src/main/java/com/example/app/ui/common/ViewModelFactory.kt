@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.app.AssetLoader
 import com.example.app.ServiceLocator
 import com.example.app.network.ApiClient
+import com.example.app.repository.cart.CartItemLocalDataSource
+import com.example.app.repository.cart.CartRepository
 import com.example.app.repository.category.CategoryRemoteDataSource
 import com.example.app.repository.category.CategoryRepository
 import com.example.app.repository.categorydetail.CategoryDetailRemoteDataSource
@@ -25,26 +27,29 @@ import kotlin.IllegalArgumentException
 class ViewModelFactory(private val context: Context): ViewModelProvider.Factory {
 
      override fun <T : ViewModel> create(modelClass: Class<T>): T {
-         return when{
-             modelClass.isAssignableFrom(HomeViewModel::class.java)-> {
-             val repository = HomeRepository(HomeAssetDataSource(AssetLoader(context)))
-             HomeViewModel(repository) as T
+         return when {
+             modelClass.isAssignableFrom(HomeViewModel::class.java) -> {
+                 val repository = HomeRepository(HomeAssetDataSource(AssetLoader(context)))
+                 HomeViewModel(repository) as T
              }
              modelClass.isAssignableFrom(CategoryViewModel::class.java) -> {
-                 val repository = CategoryRepository(CategoryRemoteDataSource(ServiceLocator.provideApiClient()))
+                 val repository =
+                     CategoryRepository(CategoryRemoteDataSource(ServiceLocator.provideApiClient()))
                  CategoryViewModel(repository) as T
              }
-             modelClass.isAssignableFrom(CategoryDetailViewModel::class.java)->{
-                 val repository = CategoryDetailRepository(CategoryDetailRemoteDataSource(ServiceLocator.provideApiClient()))
+             modelClass.isAssignableFrom(CategoryDetailViewModel::class.java) -> {
+                 val repository =
+                     CategoryDetailRepository(CategoryDetailRemoteDataSource(ServiceLocator.provideApiClient()))
                  CategoryDetailViewModel(repository) as T
              }
-             modelClass.isAssignableFrom(ProductDetailViewModel::class.java)->{
+             modelClass.isAssignableFrom(ProductDetailViewModel::class.java) -> {
                  //이곳 람다 ?let
-                 val repository = ProductDetailRepository(ProductDetailRemoteDataSource(ServiceLocator.provideApiClient()))
-                 ProductDetailViewModel(repository) as T
+                 val repository =
+                     ProductDetailRepository(ProductDetailRemoteDataSource(ServiceLocator.provideApiClient()))
+                 ProductDetailViewModel(repository,ServiceLocator.provideCartRepository(context)) as T
              }
-             modelClass.isAssignableFrom(CartViewModel::class.java)->{
-                 CartViewModel() as T
+             modelClass.isAssignableFrom(CartViewModel::class.java) -> {
+                 CartViewModel(ServiceLocator.provideCartRepository(context)) as T
              }
              else -> {
                  throw IllegalArgumentException("Failed to create ViewModel : ${modelClass.name}")

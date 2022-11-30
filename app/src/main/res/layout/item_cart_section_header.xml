@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="brandName"
+            name="header"
             type="com.example.app.model.CartHeader" />
     </data>
 
@@ -35,7 +35,7 @@
             app:layout_constraintStart_toEndOf="@id/checkbox"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:text="@{brandName}"
+            android:text="@{header.brandName}"
             tools:text="twg.offcial" />
 
 

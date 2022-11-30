@@ -64,7 +64,7 @@ class CartAdapter :RecyclerView.Adapter<RecyclerView.ViewHolder>(){
 
     class HeaderViewHolder(private val binding : ItemCartSectionHeaderBinding) :RecyclerView.ViewHolder(binding.root){
         fun bind(cartHeader: CartHeader){
-            binding.brandName = cartHeader
+            binding.header = cartHeader
             binding.executePendingBindings()
         }
     }

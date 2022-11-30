@@ -78,7 +78,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:text="@{cartItem.amount}"
+                android:text="@{String.valueOf(cartItem.amount)}"
                 app:layout_constraintEnd_toStartOf="@+id/plus_btn"
                 app:layout_constraintStart_toEndOf="@+id/minus_btn"
                 app:layout_constraintTop_toTopOf="@+id/minus_btn"
