@@ -34,8 +34,8 @@ minSdk : 23
 </p>
 BottomNavigationView를 사용하여 생성한 네비게이션바의 Home 페이지입니다.<br>
 Home layout은 NestedScrollView과 AppBarLayout을 함께 사용하여 스크롤 방향에 따라 상단의 Appbar가 접히도록 하였습니다.<br>
-AppBar 하위에는 ViewPager2를 이용해 좌,우로 배너를 넘겨 볼 수 있는 home banner를 만들어 기획전 상품 등을 배치했습니다.<br>
-banner 하위에는 RecyclerView에 layoutManager를 LinearKayoutManager로 할당하여 상하위로 스크롤 되도록 promotion 상품들을 배치했습니다.
+AppBar 하위에는 ViewPager2를 이용해 좌, 우로 배너를 넘겨 볼 수 있는 home banner를 만들어 기획전 상품 등을 배치했습니다.<br>
+banner 하위에는 RecyclerView에 layoutManager를 LinearKayoutManager로 할당하여 상 하위로 스크롤 되도록 promotion 상품들을 배치했습니다.
 <br><br><br><br>
  
  
@@ -59,7 +59,7 @@ Category 페이지에서는 RecyclerView에 GridLayoutManager를 할당하여, �
 Category 상세 페이지에서 상품을 클릭할 경우/Home Banner&Promotion 의 상품을 클릭할 경우 해당 상품의 상세페이지로 이동합니다.
 layout은 Home Page와 동일하게 NestedScrollView과 AppBarLayout을 함께 사용하여 스크롤 방향에 따라 상단의 Appbar가 접히도록 하였습니다.<br>
 추가로 NestedScrollView 바깥에 View를 위치시켜 어떤 위치에 있더라도 최하단에 고정된 뷰를 만들었습니다.
-ProductDetail에서 최하단의 장바구니 담기를 클릭시, Room DB에 상품 정보를 저장합니다.
+ProductDetail에서 최하단의 장바구니 담기를 클릭 시, Room DB에 상품 정보를 저장합니다.
 <br><br><br><br>
 
 
@@ -148,3 +148,13 @@ Room local Db에 상품 정보가 존재할 시, 이를 브랜드별로 header�
  ┣ 📜GlideModule.kt            
  ┗ 📜ServiceLocator.kt
 ```
+
+
+## License Info
+https://www.udemy.com/course/learn-android-development-with-kotlin/<br>
+해당 프로젝트는 위의 강의에서 클론 코딩 학습을 진행한 프로젝트입니다.
+
+강의를 통해    
+Activity 와 Fragment의 활용법,    
+Fragment - Viewmodel - Adatper의 연결과 역할   
+Repository api 들의 종류와 활용법 등을 배울 수 있었습니다.
