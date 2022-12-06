@@ -37,7 +37,11 @@
         android:id="@+id/navigation_category_detail"
         android:name="com.example.app.ui.categorydetail.CategoryDetailFragment"
         android:label="CategoryDetailFragment"
-        tools:layout="@layout/fragment_category_detail" />
+        tools:layout="@layout/fragment_category_detail" >
+        <action
+            android:id="@+id/action_home_to_product_detail"
+            app:destination="@id/navigation_product_detail" />
+    </fragment>
 
 
 </navigation>
