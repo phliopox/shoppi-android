@@ -5,22 +5,25 @@
 * shoppi-android 앱의 주기능 : 쇼핑몰 어플리케이션
 
 ## Environment
-OS : window 10
-Ram : 8GB
-Language : Kotlin 1.6.10
-IDE : Android Studio
-Database : Firebase
-Implementation :
+OS : window 10   
+Ram : 8GB   
+**Language** : Kotlin 1.6.10   
+IDE : Android Studio   
+**Database** : Firebase, Room  
+**Implementation** :   
 Room, Glide, Gson, Retrofit, Firebase, ViewPager, ViewModel, Navigation(androidx)...
+
+## Result
+
 
 ## Files
 * 디렉토리 구조
-<p>
+```
 📦app
  ┣ 📂common
- ┃ ┗ 📜Constants.kt
+ ┃ ┗ 📜Constants.kt         
  ┣ 📂database
- ┃ ┣ 📜AppDataBase.kt
+ ┃ ┣ 📜AppDataBase.kt          //Room Database
  ┃ ┗ 📜CartItemDao.kt
  ┣ 📂model
  ┃ ┣ 📜Banner.kt
@@ -31,7 +34,7 @@ Room, Glide, Gson, Retrofit, Firebase, ViewPager, ViewModel, Navigation(androidx
  ┃ ┣ 📜Product.kt
  ┃ ┗ 📜Title.kt
  ┣ 📂network
- ┃ ┗ 📜ApiClient.kt
+ ┃ ┗ 📜ApiClient.kt            //Retrofit - Firebase
  ┣ 📂repository
  ┃ ┣ 📂cart
  ┃ ┃ ┣ 📜CartItemDataSource.kt
@@ -77,7 +80,7 @@ Room, Glide, Gson, Retrofit, Firebase, ViewPager, ViewModel, Navigation(androidx
  ┃ ┃ ┣ 📜TextBindingAdapters.kt
  ┃ ┃ ┣ 📜TitleSectionTitleAdapter.kt
  ┃ ┃ ┣ 📜ViewBindingAdapters.kt
- ┃ ┃ ┗ 📜ViewModelFactory.kt
+ ┃ ┃ ┗ 📜ViewModelFactory.kt                // ViewModelProvider.Factory 상속, 커스텀 Factory 생성
  ┃ ┣ 📂home
  ┃ ┃ ┣ 📜HomeBannerAdapter.kt
  ┃ ┃ ┣ 📜HomeFragment.kt
@@ -88,7 +91,7 @@ Room, Glide, Gson, Retrofit, Firebase, ViewPager, ViewModel, Navigation(androidx
  ┃ ┃ ┗ 📜ProductsDetailFragment.kt
  ┃ ┣ 📜MainActivity.kt
  ┃ ┗ 📜SplashActivity.kt
- ┣ 📜AssetLoader.kt
- ┣ 📜GlideModule.kt
+ ┣ 📜AssetLoader.kt               
+ ┣ 📜GlideModule.kt            
  ┗ 📜ServiceLocator.kt
-</p>
+```
